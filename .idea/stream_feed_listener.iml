@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/packages/stream_feed_flutter_core/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/stream_feed_flutter_core/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/stream_feed_flutter_core/build" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/stream_feed/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/stream_feed/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/stream_feed/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/stream_feed_flutter/build" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/stream_feed_flutter/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/stream_feed_flutter/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/faye_dart/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/faye_dart/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/faye_dart/build" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/stream_feed/build" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/stream_feed/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/stream_feed/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/stream_feed_flutter/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/stream_feed_flutter/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/stream_feed_flutter/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/stream_feed_flutter_core/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/stream_feed_flutter_core/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/stream_feed_flutter_core/example/.pub" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
