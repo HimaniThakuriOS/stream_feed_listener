@@ -12,16 +12,16 @@
 
 ## 🛠 Installation
 
-#### Install from pub <a href="https://pub.dartlang.org/packages/stream_feed"><img alt="Pub" src="https://img.shields.io/pub/v/stream_feed.svg"></a>
+#### Install from pub <a href="https://pub.dartlang.org/packages/stream_feed_listener"><img alt="Pub" src="https://img.shields.io/pub/v/stream_feed.svg"></a>
 
-Next step is to add `stream_feed` to your dependencies, to do that just open pubspec.yaml and add it inside the dependencies section. 
+Next step is to add `stream_feed_listener` to your dependencies, to do that just open pubspec.yaml and add it inside the dependencies section. 
 
 ```yaml
 dependencies:
   flutter:
     sdk: flutter
 
-  stream_feed: ^[latest-version]
+  stream_feed_listener: ^[latest-version]
 ```
 #### Using with Flutter
 
