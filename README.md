@@ -1,30 +1,8 @@
-# Official Flutter packages for [Stream Activity Feeds](https://getstream.io/activity-feeds/)
+# Official Dart Client for [Stream Activity Feeds](https://getstream.io/activity-feeds/)
 
->The official Dart client for Stream Activity Feeds, a service for building activity feed applications. This library can be used on any Dart project and on both mobile and web apps with Flutter. You can sign up for a Stream account at https://getstream.io/get_started.
-
-
-Note: The user interface for the activity feed can vary widely across different apps. Most of our activity feed customers integrate with Stream via their backend and build their own UI. This takes advantage of Stream’s scalability while keeping full control over the UI. We update this library but not as frequently as other SDKs. 
-
-
-<p align="center">
- <a href="https://pub.dartlang.org/packages/stream_feed"><img alt="Pub" src="https://img.shields.io/pub/v/stream_feed.svg"></a>
-  <a href="https://github.com/GetStream/stream-feed-flutter/actions?query=workflow%Build"><img alt="Build status" src="https://github.com/GetStream/stream-feed-flutter/workflows/Build/badge.svg"></a>
-  <a href="https://codecov.io/gh/GetStream/stream-feed-flutter"><img src="https://codecov.io/gh/GetStream/stream-feed-flutter/branch/master/graph/badge.svg?token=ht6M92zRXx" alt="codecov"></a>
-   <a href="https://github.com/invertase/melos"><img alt="melos" src="https://img.shields.io/badge/maintained%20with-melos-f700ff.svg?style=flat-square"></a>
-</p>
-<p align="center">
-<img src="./images/flutter_feeds_beta_1.png" alt="Stream Feed Activity Feed cover image" />
-</p>
-
-## :warning: This SDK is no longer actively maintained by Stream
-
-A Feeds integration includes a combination of server-side and client-side code and the interface can vary widely which is why we are no longer focussing on supporting this SDK. If you are starting from scratch we recommend you only use the server-side SDKs. 
-
-This is by no means a reflection of our commitment to maintaining and improving the Feeds API which will always be a product that we support.
-
-We continue to welcome pull requests from community members in case you want to improve this SDK.
-
----
+> The official Dart client for Stream Activity Feeds
+> a service for building feed applications. This library can be used on any Dart project 
+> and on both mobile and web apps with Flutter.
 
 **🔗 Quick Links**
 
@@ -34,9 +12,9 @@ We continue to welcome pull requests from community members in case you want to 
 
 ## 🛠 Installation
 
-#### Install from pub
+#### Install from pub <a href="https://pub.dartlang.org/packages/stream_feed"><img alt="Pub" src="https://img.shields.io/pub/v/stream_feed.svg"></a>
 
-Next step is to add `stream_feed` to your dependencies, to do that just open pubspec.yaml and add it inside the dependencies section.
+Next step is to add `stream_feed` to your dependencies, to do that just open pubspec.yaml and add it inside the dependencies section. 
 
 ```yaml
 dependencies:
@@ -64,14 +42,19 @@ const apiKey = 'my-API-key';
 const secret = 'my-API-secret';
 
 // Instantiate a new client (server side)
-var client = StreamFeedClient(apiKey, secret: secret);
+var client = StreamFeedClient(apiKey, secret: secret, runner: Runner.server);
 
 // Optionally supply the app identifier and an options object specifying the data center to use and timeout for requests (15s)
 client = StreamFeedClient(apiKey,
-      secret: secret,
-      appId: 'yourappid',
-      options: StreamHttpClientOptions(
-          location: Location.usEast, connectTimeout: Duration(seconds: 15)));
+  secret: secret,
+  runner: Runner.server,
+  appId: 'yourappid',
+  runner: Runner.server,
+  options: StreamHttpClientOptions(
+    location: Location.usEast,
+    connectTimeout: Duration(seconds: 15),
+  ),
+);
 
 // Create a token for user with id "the-user-id"
 final userToken = client.frontendToken('the-user-id');
@@ -83,8 +66,10 @@ final userToken = client.frontendToken('the-user-id');
 #### Client API init
 
 ```dart
-// Instantiate new client with a user token
-var client = StreamFeedClient(apiKey, token: Token('userToken'));
+// Instantiate new client and set the user token
+var client = StreamFeedClient(apiKey);
+
+await client.setUser(user:user, token: frontendToken);
 ```
 
 ### 🔮 Examples
@@ -158,8 +143,8 @@ await user1.unfollow(client.flatFeed('flat', '42'), keepHistory: true);
 await user1.follow(client.flatFeed('flat', '42'), activityCopyLimit: 0);
 
 // List followers, following
-await user1.getFollowers(limit: 10, offset: 10);
-await user1.getFollowed(limit: 10, offset: 0);
+await user1.followers(limit: 10, offset: 10);
+await user1.following(limit: 10, offset: 0);
 
 
 await user1.follow(client.flatFeed('flat', '42'));
@@ -198,9 +183,9 @@ await client.batch.addToMany(activityTarget, feeds!);
 
 // Batch create follow relations (let flat:1 follow user:1, user:2 and user:3 feeds in one single request)
 const follows = [
-  FollowRelation(source: 'flat:1', target: 'user:1'),
-  FollowRelation(source:'flat:1', target: 'user:2'),
-  FollowRelation(source:'flat:1', target: 'user:3'),
+  Follow('flat:1', 'user:1'),
+  Follow('flat:1', 'user:2'),
+  Follow('flat:1', 'user:3'),
 ];
 
 // ⚠️ server-side only!
@@ -263,41 +248,35 @@ final subscription = await userFeed.subscribe((message) => print(message));
 await subscription.cancel();
 ```
 
-Docs are available on [GetStream.io](http://getstream.io/docs/?language=dart).
+Docs are available on [GetStream.io](https://getstream.io/activity-feeds/docs/flutter-dart/?language=dart).
 
-## Free for Makers
+## 🔮 Example Project
 
-Stream is free for most side and hobby projects. To qualify your project/company needs to have < 5 team members and < $10k in monthly revenue.
-For complete pricing details visit our [Feed Pricing Page](https://getstream.io/pricing/)
-
-## Structure
-Stream Feed Dart is a monorepo built using [Melos](https://docs.page/invertase/melos). Individual packages can be found in the `packages` directory while configuration and top level commands can be found in `melos.yaml`.
-
-To get started, run `bootstrap` after cloning the project.
-
-```shell
-melos bootstrap
-```
-
-### Dart version requirements
-
-This API Client project requires Dart v2.12 at a minimum.
-
-See the [github action configuration](.github/workflows/build.yaml) for details of how it is built, tested and packaged.
+There is a detailed Flutter example project in the [example](https://github.com/GetStream/stream-feed-flutter/blob/master/packages/stream_feed/example/main.dart) folder. You can directly run and play on it. 
 
 ## Contributing
 
-See extensive at [test documentation](test/README.md) for your changes.
+### Code conventions
 
-You can find generic API documentation enriched by code snippets from this package at https://getstream.io/activity-feeds/docs/flutter-dart/?language=dart
+- Make sure that you run `dartfmt` before commiting your code
+- Make sure all public methods and functions are well documented
 
-## Copyright and License Information
+### Running tests 
 
-Project is licensed under the [BSD 3-Clause](LICENSE).
+- run `flutter test`
 
-## We are hiring
+### Releasing a new version
 
-We've recently closed a [\$38 million Series B funding round](https://techcrunch.com/2021/03/04/stream-raises-38m-as-its-chat-and-activity-feed-apis-power-communications-for-1b-users/) and we keep actively growing.
-Our APIs are used by more than a billion end-users, and you'll have a chance to make a huge impact on the product within a team of the strongest engineers all over the world.
+- update the package version on `pubspec.yaml` and `version.dart`
 
-Check out our current openings and apply via [Stream's website](https://getstream.io/team/#jobs).
+- add a changelog entry on `CHANGELOG.md`
+
+- run `flutter pub publish` to publish the package
+
+### Watch models and generate JSON code
+
+JSON serialization relies on code generation; make sure to keep that running while you make changes to the library
+
+```bash
+flutter pub run build_runner watch
+```
