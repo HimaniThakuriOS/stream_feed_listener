@@ -1,6 +1,6 @@
-# Official Dart Client for [Stream Activity Feeds](https://getstream.io/activity-feeds/)
+#[Stream Activity Feeds](https://getstream.io/activity-feeds/)
 
-> The official Dart client for Stream Activity Feeds
+> Stream Activity Feeds Listener
 > a service for building feed applications. This library can be used on any Dart project 
 > and on both mobile and web apps with Flutter.
 
